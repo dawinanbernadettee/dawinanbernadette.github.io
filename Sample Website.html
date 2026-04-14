@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Edge — Digital Products for Real Estate & Business Growth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8CC80;
+    --gold-pale: #F7EDD3;
+    --ink: #0F0E0C;
+    --ink-soft: #2A2924;
+    --cream: #FAF7F2;
+    --warm-mid: #EDE7D9;
+    --muted: #7A7467;
+    --white: #FFFFFF;
+    --red-accent: #C0392B;
+    --green-check: #2D6A4F;
+    --shadow-card: 0 4px 32px rgba(15,14,12,0.10);
+    --radius: 4px;
+    --radius-lg: 12px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,247,242,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--warm-mid);
+    padding: 0 clamp(20px, 5vw, 80px);
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 900;
+    color: var(--ink); text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.88rem; font-weight: 500;
+    color: var(--ink-soft); text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--ink); color: var(--gold-light) !important;
+    padding: 10px 24px; border-radius: var(--radius);
+    font-weight: 600 !important; font-size: 0.85rem !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 92vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px clamp(20px, 5vw, 80px);
+    gap: 60px;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; top: -120px; right: -120px;
+    width: 560px; height: 560px;
+    background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 2px;
+    margin-bottom: 24px;
+  }
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .hero-headline em {
+    font-style: normal; color: var(--gold);
+    position: relative;
+  }
+  .hero-headline em::after {
+    content: '';
+    position: absolute; bottom: 2px; left: 0; right: 0;
+    height: 3px; background: var(--gold-light);
+    border-radius: 2px;
+  }
+  .hero-sub {
+    font-size: 1.15rem; color: var(--ink-soft);
+    font-weight: 400; max-width: 480px;
+    margin-bottom: 40px; line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    padding: 16px 36px;
+    border: none; border-radius: var(--radius);
+    font-size: 1rem; font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.01em;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(201,168,76,0.5);
+    background: var(--gold-light);
+  }
+  .btn-secondary {
+    color: var(--ink-soft); font-size: 0.95rem; font-weight: 500;
+    text-decoration: underline; text-underline-offset: 3px;
+    cursor: pointer; background: none; border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .hero-trust {
+    display: flex; gap: 28px; align-items: center;
+    margin-top: 48px; flex-wrap: wrap;
+  }
+  .trust-item { display: flex; align-items: center; gap: 8px; }
+  .trust-icon { font-size: 1rem; }
+  .trust-text { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+  }
+  .hero-card-stack {
+    position: relative;
+    width: 340px; height: 420px;
+  }
+  .hero-card {
+    position: absolute;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+  }
+  .hero-card-1 {
+    width: 300px; top: 60px; left: 20px;
+    transform: rotate(-3deg);
+    border: 1px solid var(--warm-mid);
+  }
+  .hero-card-2 {
+    width: 310px; top: 30px; left: 10px;
+    transform: rotate(1.5deg);
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    z-index: 2;
+  }
+  .hero-card-3 {
+    width: 320px; top: 0; left: 0;
+    z-index: 3;
+    border: 1.5px solid var(--warm-mid);
+  }
+  .card-tag-sm {
+    background: var(--gold); color: var(--ink);
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 2px;
+    display: inline-block; margin-bottom: 14px;
+  }
+  .card-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: var(--ink); }
+  .card-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 16px; }
+  .card-price { font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+  .card-price span { font-size: 0.8rem; font-weight: 400; color: var(--muted); text-decoration: line-through; margin-left: 8px; }
+  .card-bar { height: 4px; background: var(--warm-mid); border-radius: 2px; margin-top: 16px; }
+  .card-bar-fill { height: 100%; width: 70%; background: var(--gold); border-radius: 2px; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 100px clamp(20px, 5vw, 80px); }
+  .section-label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px; display: block;
+  }
+  .section-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 900; line-height: 1.15;
+    color: var(--ink); margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--muted);
+    max-width: 560px; line-height: 1.75;
+    margin-bottom: 52px;
+  }
+  .centered { text-align: center; }
+  .centered .section-sub { margin-left: auto; margin-right: auto; }
+
+  /* ── PROBLEM ── */
+  #problem {
+    background: var(--ink);
+    color: var(--cream);
+  }
+  #problem .section-headline { color: var(--cream); }
+  #problem .section-label { color: var(--gold); }
+  #problem .section-sub { color: rgba(250,247,242,0.65); }
+  .pain-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+  }
+  .pain-item {
+    background: rgba(250,247,242,0.04);
+    border: 1px solid rgba(250,247,242,0.08);
+    padding: 36px 32px;
+    transition: background 0.2s;
+  }
+  .pain-item:hover { background: rgba(201,168,76,0.06); }
+  .pain-icon { font-size: 2rem; margin-bottom: 16px; }
+  .pain-heading { font-size: 1.05rem; font-weight: 600; color: var(--cream); margin-bottom: 10px; }
+  .pain-text { font-size: 0.9rem; color: rgba(250,247,242,0.55); line-height: 1.7; }
+  .pain-quote {
+    margin-top: 60px;
+    padding: 48px;
+    border-left: 3px solid var(--gold);
+    background: rgba(201,168,76,0.05);
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-style: italic; color: var(--cream);
+    max-width: 640px;
+  }
+
+  /* ── SOLUTION ── */
+  #solution { background: var(--cream); }
+  .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .solution-steps { display: flex; flex-direction: column; gap: 32px; }
+  .step {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 24px; border-radius: var(--radius-lg);
+    border: 1px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .step:hover { border-color: var(--gold); background: var(--gold-pale); }
+  .step-num {
+    min-width: 44px; height: 44px;
+    background: var(--gold); color: var(--ink);
+    font-weight: 900; font-size: 1rem;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+  }
+  .step-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; color: var(--ink); }
+  .step-text { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+  .solution-visual {
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 48px 40px;
+    color: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  .solution-visual::before {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(201,168,76,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .stat-row { display: flex; flex-direction: column; gap: 32px; position: relative; z-index: 1; }
+  .stat-item { border-bottom: 1px solid rgba(250,247,242,0.1); padding-bottom: 28px; }
+  .stat-item:last-child { border: none; padding: 0; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 0.88rem; color: rgba(250,247,242,0.6); margin-top: 6px; }
+
+  /* ── PRODUCTS ── */
+  #products { background: var(--warm-mid); }
+  .product-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px; margin-top: 0;
+  }
+  .product-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(15,14,12,0.15);
+  }
+  .product-card-badge {
+    position: relative;
+  }
+  .product-banner {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    position: relative;
+  }
+  .banner-re { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+  .banner-ai { background: linear-gradient(135deg, #0f3460 0%, #533483 100%); }
+  .banner-tools { background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%); }
+  .product-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--gold); color: var(--ink);
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 5px 12px; border-radius: 2px;
+  }
+  .product-body { padding: 28px 28px 24px; flex: 1; display: flex; flex-direction: column; }
+  .product-category { font-size: 0.72rem; font-weight: 700; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+  .product-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; line-height: 1.25; }
+  .product-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 20px; flex: 1; }
+  .product-includes { list-style: none; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+  .product-includes li {
+    font-size: 0.84rem; color: var(--ink-soft);
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .product-includes li::before { content: '✓'; color: var(--green-check); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .product-footer {
+    padding: 20px 28px;
+    border-top: 1px solid var(--warm-mid);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .product-price-label { font-size: 0.75rem; color: var(--muted); }
+  .product-price-val { font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+  .product-price-val sub { font-size: 0.8rem; font-weight: 400; color: var(--muted); }
+  .btn-buy {
+    background: var(--ink); color: var(--gold-light);
+    border: none; padding: 12px 22px;
+    border-radius: var(--radius); font-size: 0.88rem; font-weight: 700;
+    cursor: pointer; text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-buy:hover { background: var(--gold); color: var(--ink); }
+
+  /* ── BENEFITS ── */
+  #benefits { background: var(--cream); }
+  .benefits-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+  .benefits-list { display: flex; flex-direction: column; gap: 28px; }
+  .benefit-row {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 20px; border-radius: var(--radius-lg);
+  }
+  .benefit-row:nth-child(odd) { background: var(--warm-mid); }
+  .benefit-icon-wrap {
+    width: 48px; height: 48px; flex-shrink: 0;
+    background: var(--gold);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+  }
+  .benefit-content {}
+  .benefit-title { font-weight: 700; font-size: 1rem; color: var(--ink); margin-bottom: 5px; }
+  .benefit-text { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+  .outcomes-box {
+    background: var(--ink); color: var(--cream);
+    border-radius: var(--radius-lg); padding: 48px 40px;
+    position: sticky; top: 100px;
+  }
+  .outcomes-box .section-label { color: var(--gold); }
+  .outcomes-box .section-headline { color: var(--cream); font-size: 1.6rem; margin-bottom: 30px; }
+  .outcome-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+  .outcome-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.92rem; color: rgba(250,247,242,0.75); line-height: 1.5;
+  }
+  .outcome-list li::before { content: '→'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+  .outcomes-cta { margin-top: 36px; width: 100%; text-align: center; }
+
+  /* ── SOCIAL PROOF ── */
+  #proof { background: var(--warm-mid); }
+  .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .testimonial {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 32px; box-shadow: var(--shadow-card);
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; }
+  .testimonial-text { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.7; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--gold); display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; color: var(--ink); flex-shrink: 0;
+  }
+  .author-name { font-weight: 700; font-size: 0.88rem; color: var(--ink); }
+  .author-role { font-size: 0.78rem; color: var(--muted); }
+  .proof-logos {
+    margin-top: 60px; text-align: center;
+  }
+  .proof-logos p { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+  .logo-row { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; align-items: center; }
+  .logo-pill {
+    background: var(--white); border: 1px solid var(--warm-mid);
+    padding: 12px 24px; border-radius: var(--radius);
+    font-weight: 600; font-size: 0.85rem; color: var(--muted);
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--cream); }
+  .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-visual {
+    position: relative;
+  }
+  .about-photo {
+    width: 100%; height: 480px;
+    background: linear-gradient(135deg, var(--ink) 0%, #2A2924 100%);
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    position: relative; overflow: hidden;
+  }
+  .about-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(201,168,76,0.15) 100%);
+  }
+  .about-badge {
+    position: absolute; bottom: -20px; right: -20px;
+    background: var(--gold); color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px; text-align: center;
+    box-shadow: var(--shadow-card);
+  }
+  .about-badge-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; line-height: 1; }
+  .about-badge-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; }
+  .about-content {}
+  .about-content .section-headline { margin-bottom: 24px; }
+  .about-bio { font-size: 1rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 20px; }
+  .credential-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
+  .credential-list li {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem; color: var(--ink-soft); font-weight: 500;
+  }
+  .credential-list li::before { content: '✦'; color: var(--gold); font-size: 0.7rem; flex-shrink: 0; }
+
+  /* ── LEAD CAPTURE ── */
+  #lead {
+    background: var(--ink);
+    position: relative; overflow: hidden;
+  }
+  #lead::before {
+    content: '';
+    position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .lead-inner {
+    max-width: 640px; margin: 0 auto; text-align: center;
+    position: relative; z-index: 1;
+  }
+  #lead .section-label { color: var(--gold); }
+  #lead .section-headline { color: var(--cream); }
+  #lead .section-sub { color: rgba(250,247,242,0.6); margin-left: auto; margin-right: auto; }
+  .lead-form {
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .lead-input {
+    flex: 1; min-width: 220px;
+    padding: 16px 20px;
+    background: rgba(250,247,242,0.07);
+    border: 1px solid rgba(250,247,242,0.15);
+    border-radius: var(--radius);
+    color: var(--cream); font-size: 0.95rem;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .lead-input::placeholder { color: rgba(250,247,242,0.35); }
+  .lead-input:focus { border-color: var(--gold); }
+  .lead-note { font-size: 0.78rem; color: rgba(250,247,242,0.35); }
+  .lead-note a { color: var(--gold); }
+
+  /* ── FINAL CTA ── */
+  #cta { background: var(--gold-pale); padding: 80px clamp(20px, 5vw, 80px); text-align: center; }
+  #cta .section-headline { max-width: 640px; margin: 0 auto 20px; }
+  #cta .section-sub { max-width: 480px; margin: 0 auto 40px; }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center; }
+  .btn-outline {
+    border: 2px solid var(--ink); color: var(--ink);
+    padding: 14px 32px; border-radius: var(--radius);
+    font-size: 0.95rem; font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer; text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--gold-light); }
+  .guarantee {
+    margin-top: 32px; font-size: 0.82rem; color: var(--muted);
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(250,247,242,0.45);
+    padding: 40px clamp(20px, 5vw, 80px);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px; font-size: 0.82rem;
+  }
+  footer a { color: rgba(250,247,242,0.45); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--cream); }
+  .footer-logo span { color: var(--gold); }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag, .hero-headline, .hero-sub, .hero-actions, .hero-trust {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-tag         { animation-delay: 0.1s; }
+  .hero-headline    { animation-delay: 0.22s; }
+  .hero-sub         { animation-delay: 0.34s; }
+  .hero-actions     { animation-delay: 0.46s; }
+  .hero-trust       { animation-delay: 0.58s; }
+  .hero-visual      { animation: fadeUp 0.8s 0.3s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 60px 20px; min-height: auto; gap: 48px; }
+    .hero-visual { display: none; }
+    .solution-grid, .benefits-layout, .about-layout { grid-template-columns: 1fr; gap: 48px; }
+    .outcomes-box { position: static; }
+    section { padding: 72px 20px; }
+    .pain-grid { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="#" class="nav-logo">AI<span>Edge</span></a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#proof">Reviews</a></li>
+    <li><a href="#cta" class="nav-cta">Shop Now</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-tag">✦ AI Tools for Real Estate &amp; Business</div>
+    <h1 class="hero-headline">
+      Stop Guessing.<br>
+      Start Closing —<br>
+      with <em>AI on Your Side.</em>
+    </h1>
+    <p class="hero-sub">
+      Done-for-you ebooks, AI prompt templates, and smart business tools designed specifically for real estate agents, entrepreneurs, and anyone ready to use AI to grow faster — even if you're starting from zero.
+    </p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Browse the Shop →</a>
+      <button class="btn-secondary" onclick="document.getElementById('lead').scrollIntoView({behavior:'smooth'})">Get a Free Resource</button>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-icon">⚡</span><span class="trust-text">Instant Digital Download</span></div>
+      <div class="trust-item"><span class="trust-icon">🔒</span><span class="trust-text">Secure Checkout</span></div>
+      <div class="trust-item"><span class="trust-icon">✦</span><span class="trust-text">500+ Happy Customers</span></div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="hero-card hero-card-1">
+        <div class="card-tag-sm">New</div>
+        <div class="card-title">AI Listing Copy Templates</div>
+        <div class="card-meta">47 done-for-you prompts</div>
+        <div class="card-price">$27 <span>$79</span></div>
+      </div>
+      <div class="hero-card hero-card-2">
+        <div class="card-tag-sm">Bestseller</div>
+        <div class="card-title">Real Estate AI Playbook</div>
+        <div class="card-meta">Complete 90-page ebook</div>
+        <div class="card-price">$47 <span>$120</span></div>
+      </div>
+      <div class="hero-card hero-card-3">
+        <div class="card-tag-sm">⭐ Top Rated</div>
+        <div class="card-title">6-Figure AI Business Bundle</div>
+        <div class="card-meta">3 tools + full ebook + templates</div>
+        <div class="card-price">$97 <span>$297</span></div>
+        <div class="card-bar"><div class="card-bar-fill"></div></div>
+        <div style="font-size:0.72rem;color:#7A7467;margin-top:6px;">70% sold — limited stock</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM ── -->
+<section id="problem">
+  <span class="section-label">The Struggle Is Real</span>
+  <h2 class="section-headline" style="color:var(--cream);max-width:580px;">
+    You're Working Hard.<br>But AI Is Leaving You Behind.
+  </h2>
+  <p class="section-sub">
+    Most agents and entrepreneurs know AI is changing the game — they just don't know where to start. And that uncertainty is costing them time, clients, and money every single day.
+  </p>
+
+  <div class="pain-grid">
+    <div class="pain-item">
+      <div class="pain-icon">⏳</div>
+      <div class="pain-heading">You're drowning in repetitive tasks</div>
+      <p class="pain-text">Writing listings, drafting emails, creating content — it eats your entire week. There's no time left to actually build your business.</p>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">🤷</div>
+      <div class="pain-heading">You don't know where to start with AI</div>
+      <p class="pain-text">Everyone's talking about ChatGPT and AI tools, but the tutorials are confusing, generic, and definitely not built for real estate or your business type.</p>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">💸</div>
+      <div class="pain-heading">Marketing feels like throwing money away</div>
+      <p class="pain-text">You're spending on ads, social media, and email tools — but you're not seeing the ROI. The content is inconsistent and doesn't convert.</p>
+    </div>
+    <div class="pain-item">
+      <div class="pain-icon">📉</div>
+      <div class="pain-heading">Leads dry up when the market slows</div>
+      <p class="pain-text">When referrals stop coming in, you have no reliable system for generating your own leads. It's feast or famine — and you're tired of it.</p>
+    </div>
+  </div>
+
+  <blockquote class="pain-quote">
+    "I spent 3 hours writing one listing description. A week later, I found out a competitor did it in 8 minutes with AI — and theirs got more showings."
+    <div style="font-size:0.82rem;font-style:normal;color:rgba(250,247,242,0.45);margin-top:14px;">— A real estate agent who found us 3 months too late</div>
+  </blockquote>
+</section>
+
+<!-- ── SOLUTION ── -->
+<section id="solution">
+  <div class="solution-grid">
+    <div>
+      <span class="section-label">The AI Edge Difference</span>
+      <h2 class="section-headline">The Shortcut That Actually Works</h2>
+      <p class="section-sub">Our digital products aren't theory — they're plug-and-play systems built specifically for your industry. Download, apply, and see results this week.</p>
+
+      <div class="solution-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title">Pick the right product for your goal</div>
+            <p class="step-text">Whether you want to write better listings, generate leads, build an AI income stream, or automate your marketing — we have a tool for that. No fluff, no guesswork.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title">Download and implement today</div>
+            <p class="step-text">Everything is ready to use within minutes. No tech skills needed. No complicated setup. Just open, follow the guide, and plug it into your workflow.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title">Save hours and start seeing results</div>
+            <p class="step-text">Our customers report saving 5–15 hours per week and generating new leads within days. That's time back in your life and money back in your pipeline.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="solution-visual">
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-num">10×</div>
+          <div class="stat-label">faster content creation with our AI prompt templates</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15hrs</div>
+          <div class="stat-label">saved per week on average by agents using our systems</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">$0</div>
+          <div class="stat-label">tech experience required — built for beginners</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">professionals already using AI Edge products</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section id="products">
+  <div class="centered">
+    <span class="section-label">The Shop</span>
+    <h2 class="section-headline">Everything You Need to Win with AI</h2>
+    <p class="section-sub">Every product is designed for fast implementation and real results — not just reading material that collects digital dust.</p>
+  </div>
+
+  <div class="product-grid">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-card-badge">
+        <div class="product-banner banner-re">📖</div>
+        <span class="product-badge">Bestseller</span>
+      </div>
+      <div class="product-body">
+        <div class="product-category">Ebook</div>
+        <h3 class="product-name">The Real Estate AI Playbook</h3>
+        <p class="product-desc">The complete, step-by-step guide to using AI in your real estate business — from writing listings to following up with leads on autopilot.</p>
+        <ul class="product-includes">
+          <li>90-page practical guide (no fluff)</li>
+          <li>AI tool recommendations by task</li>
+          <li>Scripts for buyer &amp; seller conversations</li>
+          <li>Lead generation strategies using AI</li>
+          <li>Done-for-you content calendar</li>
+        </ul>
+      </div>
+      <div class="product-footer">
+        <div>
+          <div class="product-price-label">One-time purchase</div>
+          <div class="product-price-val">$47 <sub style="text-decoration:line-through;color:var(--muted)">$120</sub></div>
+        </div>
+        <a href="#cta" class="btn-buy">Get It Now</a>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-card-badge">
+        <div class="product-banner banner-ai">🤖</div>
+        <span class="product-badge">Most Popular</span>
+      </div>
+      <div class="product-body">
+        <div class="product-category">Prompt Template Pack</div>
+        <h3 class="product-name">AI Listing &amp; Marketing Template Vault</h3>
+        <p class="product-desc">47 ready-to-use AI prompts that generate listing descriptions, social media posts, email sequences, and client scripts in seconds.</p>
+        <ul class="product-includes">
+          <li>15 listing description templates</li>
+          <li>12 social media caption formulas</li>
+          <li>8 email follow-up sequences</li>
+          <li>7 buyer/seller consultation scripts</li>
+          <li>5 open house marketing templates</li>
+        </ul>
+      </div>
+      <div class="product-footer">
+        <div>
+          <div class="product-price-label">One-time purchase</div>
+          <div class="product-price-val">$27 <sub style="text-decoration:line-through;color:var(--muted)">$79</sub></div>
+        </div>
+        <a href="#cta" class="btn-buy">Get It Now</a>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card" style="border: 2px solid var(--gold); position:relative;">
+      <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--ink);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:2px;white-space:nowrap;">Best Value Bundle</div>
+      <div class="product-card-badge">
+        <div class="product-banner banner-tools">💼</div>
+        <span class="product-badge">Bundle Deal</span>
+      </div>
+      <div class="product-body">
+        <div class="product-category">Complete Bundle</div>
+        <h3 class="product-name">6-Figure AI Business Launch Kit</h3>
+        <p class="product-desc">Everything you need to build a profitable, AI-powered business — whether you're a real estate agent, coach, consultant, or online entrepreneur.</p>
+        <ul class="product-includes">
+          <li>Real Estate AI Playbook (ebook)</li>
+          <li>Full AI Template Vault (47 prompts)</li>
+          <li>AI Income Streams guide</li>
+          <li>Business automation checklist</li>
+          <li>Bonus: 1-hour video masterclass</li>
+          <li>Lifetime updates included</li>
+        </ul>
+      </div>
+      <div class="product-footer">
+        <div>
+          <div class="product-price-label">Everything above — one price</div>
+          <div class="product-price-val">$97 <sub style="text-decoration:line-through;color:var(--muted)">$297</sub></div>
+        </div>
+        <a href="#cta" class="btn-buy" style="background:var(--gold);color:var(--ink);">Get Bundle</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ── -->
+<section id="benefits">
+  <div class="benefits-layout">
+    <div>
+      <span class="section-label">Why It Works</span>
+      <h2 class="section-headline">Built for Real People with Real Businesses</h2>
+      <p class="section-sub">Every product is tested, simplified, and designed to be actionable — not just informational.</p>
+
+      <div class="benefits-list">
+        <div class="benefit-row">
+          <div class="benefit-icon-wrap">⚡</div>
+          <div class="benefit-content">
+            <div class="benefit-title">Ready to Use in Minutes, Not Weeks</div>
+            <p class="benefit-text">No courses to binge, no setup marathons. Download the product, follow the simple guide, and start seeing results the same day you purchase.</p>
+          </div>
+        </div>
+        <div class="benefit-row">
+          <div class="benefit-icon-wrap">🎯</div>
+          <div class="benefit-content">
+            <div class="benefit-title">Designed for Your Specific Industry</div>
+            <p class="benefit-text">Generic AI advice doesn't work for real estate or service businesses. Our tools are built around the exact workflows, clients, and outcomes you deal with daily.</p>
+          </div>
+        </div>
+        <div class="benefit-row">
+          <div class="benefit-icon-wrap">📈</div>
+          <div class="benefit-content">
+            <div class="benefit-title">Real Results, Not Just Information</div>
+            <p class="benefit-text">We focus on output: more listings, better marketing, more clients, less time wasted. Every tool is reverse-engineered from a real business outcome.</p>
+          </div>
+        </div>
+        <div class="benefit-row">
+          <div class="benefit-icon-wrap">🧠</div>
+          <div class="benefit-content">
+            <div class="benefit-title">No Tech Skills Required</div>
+            <p class="benefit-text">If you can copy and paste, you can use these tools. We've done the hard AI work for you — all you have to do is plug in your details and go.</p>
+          </div>
+        </div>
+        <div class="benefit-row">
+          <div class="benefit-icon-wrap">🔄</div>
+          <div class="benefit-content">
+            <div class="benefit-title">Lifetime Updates as AI Evolves</div>
+            <p class="benefit-text">AI changes fast. Every bundle purchase includes free updates — so you're never stuck using outdated strategies while competitors pull ahead.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="outcomes-box">
+        <span class="section-label">Real Outcomes</span>
+        <h3 class="section-headline">What You Can Expect After 30 Days</h3>
+        <ul class="outcome-list">
+          <li>Write a full listing description in under 2 minutes using AI — every time</li>
+          <li>Build a month of social media content in a single afternoon</li>
+          <li>Have a working lead generation system running on near-autopilot</li>
+          <li>Know exactly which AI tools to use — and which to ignore</li>
+          <li>Feel genuinely confident using AI in front of clients and colleagues</li>
+          <li>Reclaim 10+ hours per week to spend on high-value, revenue-generating work</li>
+          <li>Position yourself as the modern, forward-thinking expert in your market</li>
+        </ul>
+        <div class="outcomes-cta">
+          <a href="#products" class="btn-primary" style="width:100%;display:block;">See the Products →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF ── -->
+<section id="proof">
+  <div class="centered">
+    <span class="section-label">Real Results</span>
+    <h2 class="section-headline">What Our Customers Are Saying</h2>
+    <p class="section-sub">Over 500 agents, entrepreneurs, and beginners have already used these tools to transform how they work.</p>
+  </div>
+
+  <div class="proof-grid">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I was spending 3–4 hours writing listing content every week. Now I do it in 20 minutes. The template vault alone has saved me more time than I can count — and my listings are getting more engagement than ever."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">MR</div>
+        <div>
+          <div class="author-name">Michelle R.</div>
+          <div class="author-role">Real Estate Agent, Texas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I had zero experience with AI before buying the Playbook. Within two weeks I had a full content system running, a new lead magnet, and my first 3 AI-assisted closings. This is the real deal."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">DJ</div>
+        <div>
+          <div class="author-name">David J.</div>
+          <div class="author-role">New Agent &amp; Entrepreneur, Florida</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"I bought the bundle expecting good info. I didn't expect to completely overhaul how I run my business in a month. The AI income guide alone gave me two new revenue streams I'm already monetizing."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">PK</div>
+        <div>
+          <div class="author-name">Priya K.</div>
+          <div class="author-role">Small Business Owner, California</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proof-logos">
+    <p>Trusted by professionals from companies including</p>
+    <div class="logo-row">
+      <div class="logo-pill">Keller Williams</div>
+      <div class="logo-pill">RE/MAX</div>
+      <div class="logo-pill">eXp Realty</div>
+      <div class="logo-pill">Century 21</div>
+      <div class="logo-pill">Compass</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="about-layout">
+    <div class="about-visual">
+      <div class="about-photo">👤</div>
+      <div class="about-badge">
+        <div class="about-badge-num">7+</div>
+        <div class="about-badge-label">Years in Real<br>Estate &amp; AI</div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <span class="section-label">About the Creator</span>
+      <h2 class="section-headline">Your Industry Knows AI.<br>This AI Knows Your Industry.</h2>
+      <p class="about-bio">I'm an AI strategist and real estate professional who spent years watching brilliant agents and entrepreneurs work themselves to exhaustion — doing tasks that AI could handle in seconds.</p>
+      <p class="about-bio">After building and selling my own AI-powered business systems, I decided to package everything I know into affordable, beginner-friendly products that actually work in the real world — not just in theory.</p>
+      <p class="about-bio">I built AI Edge because I believe that technology should give you your time back — not add more complexity to your already-full plate. Every product here is something I've personally used, tested, and refined with real clients.</p>
+
+      <ul class="credential-list">
+        <li>Licensed real estate professional with 7+ years of field experience</li>
+        <li>Built and scaled multiple AI-powered service businesses</li>
+        <li>Trained 200+ agents and entrepreneurs in AI workflows</li>
+        <li>Featured speaker on AI adoption in real estate markets</li>
+        <li>Creator of proprietary AI prompt frameworks for service businesses</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEAD CAPTURE ── -->
+<section id="lead">
+  <div class="lead-inner">
+    <span class="section-label">Free Resource</span>
+    <h2 class="section-headline">Get Your Free AI Starter Kit — On Us</h2>
+    <p class="section-sub">Not ready to buy? Start here. Enter your email and we'll send you our free "5 AI Prompts Every Real Estate Agent Needs" guide — instantly, no strings attached.</p>
+
+    <div class="lead-form">
+      <input type="text" class="lead-input" placeholder="Your first name">
+      <input type="email" class="lead-input" placeholder="Your best email address">
+      <a href="#" class="btn-primary" style="white-space:nowrap;">Send Me the Free Guide →</a>
+    </div>
+    <p class="lead-note">🔒 No spam. Unsubscribe anytime. We respect your privacy.</p>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section id="cta">
+  <span class="section-label" style="display:block;margin-bottom:14px;">Ready to Start?</span>
+  <h2 class="section-headline">The Market Won't Wait.<br>Neither Should You.</h2>
+  <p class="section-sub">Every week you wait, your competitors get more comfortable with AI. Take the shortcut — and let the tools do the heavy lifting.</p>
+  <div class="cta-actions">
+    <a href="#products" class="btn-primary">Shop All Products →</a>
+    <a href="#lead" class="btn-outline">Get the Free Guide First</a>
+  </div>
+  <div class="guarantee">🛡️ 30-Day Money-Back Guarantee — If you're not happy, we'll refund you. No questions asked.
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">AI<span>Edge</span></div>
+  <div class="footer-links">
+    <a href="#">Products</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#">Refund Policy</a>
+  </div>
+  <div>© 2025 AI Edge. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
